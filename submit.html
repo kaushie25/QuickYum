@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Share Your Recipe — QuickYum</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top qy-nav scrolled" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand qy-brand" href="index.html">Quick<span>Yum</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-lg-1 align-items-lg-center">
+          <li class="nav-item ms-lg-2"><a class="nav-link btn-nav-share" href="index.html">Home</a></li>
+          <li class="nav-item ms-lg-2"><a class="nav-link btn-nav-share" href="explorer.html">Explore</a></li>
+          <li class="nav-item ms-lg-2"><a class="nav-link btn-nav-share active" href="submit.html">Share Recipe</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-hero py-5">
+    <div class="container text-center">
+      <span class="section-tag">Community</span>
+      <h1 class="page-hero-title">Share Your Secret Recipe</h1>
+      <p class="page-hero-sub">Join our community of home cooks and inspire others with your creations.</p>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="submit-section py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <!-- Success Message (hidden initially) -->
+          <div class="success-banner d-none" id="successBanner">
+            <div class="success-icon">🎉</div>
+            <h3>Recipe Submitted!</h3>
+            <p>Thank you for sharing your recipe with the QuickYum community. We'll review it shortly.</p>
+            <button class="btn btn-qy-primary mt-3" onclick="resetForm()">Submit Another</button>
+          </div>
+
+          <!-- Form -->
+          <div class="submit-card" id="formCard">
+            <div class="submit-card-header">
+              <h3>Recipe Details</h3>
+              <p>Fill in the details below. All fields marked with <span class="req">*</span> are required.</p>
+            </div>
+
+            <form id="recipeForm" novalidate>
+
+              <!-- Recipe Name -->
+              <div class="mb-4 form-group-qy">
+                <label for="recipeName" class="form-label">Recipe Name <span class="req">*</span></label>
+                <input type="text" class="form-control qy-input" id="recipeName" placeholder="e.g. Mum's Special Fried Rice" required minlength="3"/>
+                <div class="invalid-msg" id="recipeNameMsg">Please enter a recipe name (min. 3 characters).</div>
+              </div>
+
+              <!-- Contributor Name -->
+              <div class="mb-4 form-group-qy">
+                <label for="contribName" class="form-label">Your Name <span class="req">*</span></label>
+                <input type="text" class="form-control qy-input" id="contribName" placeholder="e.g. Sarah Fernando" required minlength="2"/>
+                <div class="invalid-msg" id="contribNameMsg">Please enter your name (min. 2 characters).</div>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-4 form-group-qy">
+                <label for="email" class="form-label">Email Address <span class="req">*</span></label>
+                <input type="email" class="form-control qy-input" id="email" placeholder="e.g. sarah@example.com" required/>
+                <div class="invalid-msg" id="emailMsg">Please enter a valid email address.</div>
+              </div>
+
+              <!-- Category -->
+              <div class="mb-4 form-group-qy">
+                <label for="category" class="form-label">Meal Category <span class="req">*</span></label>
+                <select class="form-select qy-input" id="category" required>
+                  <option value="">Choose a category…</option>
+                  <option value="breakfast">🍳 Breakfast</option>
+                  <option value="lunch">🥗 Lunch</option>
+                  <option value="dinner">🍝 Dinner</option>
+                </select>
+                <div class="invalid-msg" id="categoryMsg">Please select a category.</div>
+              </div>
+
+              <!-- Diet Tags -->
+              <div class="mb-4 form-group-qy">
+                <label class="form-label">Diet Tags</label>
+                <div class="d-flex flex-wrap gap-2 mt-1">
+                  <label class="tag-check"><input type="checkbox" value="vegan"> 🌿 Vegan</label>
+                  <label class="tag-check"><input type="checkbox" value="vegetarian"> 🥦 Vegetarian</label>
+                  <label class="tag-check"><input type="checkbox" value="quick"> ⚡ Quick Meal</label>
+                  <label class="tag-check"><input type="checkbox" value="nonveg"> 🍗 Non-Veg</label>
+                </div>
+              </div>
+
+              <!-- Cook Time -->
+              <div class="mb-4 form-group-qy">
+                <label for="cookTime" class="form-label">Estimated Cook Time (minutes) <span class="req">*</span></label>
+                <input type="number" class="form-control qy-input" id="cookTime" placeholder="e.g. 30" min="1" max="480" required/>
+                <div class="invalid-msg" id="cookTimeMsg">Please enter a valid cook time (1–480 minutes).</div>
+              </div>
+
+              <!-- Ingredients -->
+              <div class="mb-4 form-group-qy">
+                <label for="ingredients" class="form-label">Ingredients <span class="req">*</span></label>
+                <textarea class="form-control qy-input" id="ingredients" rows="5" placeholder="List each ingredient on a new line, e.g.:&#10;2 cups of rice&#10;1 tbsp olive oil&#10;Salt to taste" required minlength="20"></textarea>
+                <div class="invalid-msg" id="ingredientsMsg">Please list the ingredients (at least one).</div>
+              </div>
+
+              <!-- Steps -->
+              <div class="mb-4 form-group-qy">
+                <label for="steps" class="form-label">Cooking Instructions <span class="req">*</span></label>
+                <textarea class="form-control qy-input" id="steps" rows="7" placeholder="Describe each step, e.g.:&#10;Step 1: Rinse the rice until water runs clear.&#10;Step 2: Heat oil in a pan…" required minlength="30"></textarea>
+                <div class="invalid-msg" id="stepsMsg">Please provide the cooking instructions.</div>
+              </div>
+
+              <!-- Submit -->
+              <div class="mt-4">
+                <button type="submit" class="btn btn-qy-primary w-100 btn-submit-recipe" id="submitBtn">
+                  <span class="btn-text">Submit Recipe 🍽️</span>
+                  <span class="btn-loading d-none">Submitting…</span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Side Tips -->
+        <div class="col-lg-3 d-none d-lg-block">
+          <div class="tips-card">
+            <h5>💡 Tips for a great submission</h5>
+            <ul>
+              <li>Be specific with ingredient amounts.</li>
+              <li>Write steps in a clear, numbered order.</li>
+              <li>Mention any allergens in the recipe.</li>
+              <li>Include prep time vs. cook time if different.</li>
+              <li>Add a personal note about the dish!</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="qy-footer py-4">
+    <div class="container">
+      <div class="row align-items-center gy-3">
+        <div class="col-md-4">
+          <span class="qy-brand">Quick<span>Yum</span></span>
+          <p class="footer-tagline mt-1 mb-0">Cooking made simple, one recipe at a time.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <ul class="footer-links list-unstyled d-flex justify-content-center gap-3 mb-0">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explorer.html">Explore</a></li>
+            <li><a href="submit.html">Share</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <small>© 2025 QuickYum &middot;  ASP/2023/064</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/submit.js"></script>
+</body>
+</html>
