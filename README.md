@@ -2,7 +2,7 @@
 # 🍴 QuickYum — Digital Recipe Book
 
 > A responsive, interactive web application built with HTML, CSS, Bootstrap 5, and JavaScript.
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Project Overview](#project-overview)
 - [Live Pages](#live-pages)
@@ -18,7 +18,7 @@
 
 ---
 
-## 📖 Project Overview
+##  Project Overview
 
 **QuickYum** is a digital recipe book web application designed for university students and busy people who want quick, easy access to meal ideas. Users can browse recipes by category, search by ingredient or name, filter by diet type, and submit their own secret recipes through a validated form.
 
@@ -26,7 +26,7 @@ The project was built as part of the **COM 2303 – Web Design** module at Rajar
 
 ---
 
-## 🌐 Live Pages
+##  Live Pages
 
 | Page | File | Description |
 |------|------|-------------|
@@ -74,7 +74,7 @@ QuickYum/
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
@@ -89,7 +89,7 @@ QuickYum/
 
 ---
 
-## ✨ Features
+##  Features
 
 ### Home Page (`index.html`)
 - ✅ Responsive sticky navbar with scroll effect (transparent → dark)
@@ -156,7 +156,7 @@ python -m http.server 8000
 
 ---
 
-## 📄 Page Descriptions
+##  Page Descriptions
 
 ### `index.html` — Home Page
 
@@ -172,7 +172,7 @@ A form page where users can contribute their own recipes. Each field is validate
 
 ---
 
-## ⚙️ JavaScript Features
+##  JavaScript Features
 
 The project implements the following JavaScript features as required by the project specification:
 
